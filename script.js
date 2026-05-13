@@ -6,7 +6,7 @@ cv.height = REZ[1];
 const ctx = cv.getContext("2d");
 
 //posisjon
-x = 100
+x = REZ[0]/2
 y = 100
 radius = 30
 
@@ -51,6 +51,7 @@ function animate() {
         viewportTransform.y
     )
     player()
+    Number(viewportTransform.x -= xspe)
     x += xspe
     // platx += platxsp
     // dette skaper tyngdekraft
@@ -86,14 +87,9 @@ document.addEventListener("keydown", (event) => {
             return
         case 'a':
             xspe = -10
-            // platxsp = 10
-            Number(viewportTransform.x -= xspe)
             return
         case 'd':
             xspe = 10
-            // platxsp = -10
-            Number(viewportTransform.x -= xspe)
-            console.log(viewportTransform.x);
             return
     }
 })

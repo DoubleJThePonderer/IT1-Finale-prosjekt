@@ -11,4 +11,5 @@ det jeg skal er å utvide et eksisterene prosjekt som jeg kom delvis langt på.
 # logg
 
 ## 13.05.2026
+- adda viewport (må forbedres men funker intill videre)
 -
