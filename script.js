@@ -10,6 +10,12 @@ x = 100
 y = 100
 radius = 30
 
+var viewportTransform = {
+    x: 0,
+    y: 0,
+    scale: 1
+}
+
 
 // movementvariabler
 let canJump = true
@@ -32,8 +38,18 @@ function platforms() {
 }
 
 function animate() {
+    ctx.setTransform(1, 0, 0, 1, 0, 0)
     ctx.clearRect(0, 0, REZ[0], REZ[1])
 
+
+    ctx.setTransform(
+        viewportTransform.scale,
+        0,
+        0,
+        viewportTransform.scale,
+        viewportTransform.x,
+        viewportTransform.y
+    )
     player()
     x += xspe
     // platx += platxsp
@@ -69,14 +85,15 @@ document.addEventListener("keydown", (event) => {
             }
             return
         case 'a':
-            if (x >= 0 + radius) {
-                xspe = -10
-                // platxsp = 10
-            }
+            xspe = -10
+            // platxsp = 10
+            Number(viewportTransform.x -= xspe)
             return
         case 'd':
             xspe = 10
             // platxsp = -10
+            Number(viewportTransform.x -= xspe)
+            console.log(viewportTransform.x);
             return
     }
 })
