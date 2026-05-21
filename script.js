@@ -71,16 +71,16 @@ function animate() {
     }
 
     if (x >= rigtEdge) {
-        Number(viewportTransform.x -= 1000)
+        Number(viewportTransform.x -= REZ[0])
         x += 10
-        rigtEdge += 1000
-        leftEdge += 1000
+        rigtEdge += REZ[0]
+        leftEdge += REZ[0]
     }
     if (x == leftEdge) {
-        Number(viewportTransform.x += 1000)
+        Number(viewportTransform.x += REZ[0])
         x -= 10
-        rigtEdge -= 1000
-        leftEdge -= 1000
+        rigtEdge -= REZ[0]
+        leftEdge -= REZ[0]
     }
     platforms()
     // denne lager neste frame
