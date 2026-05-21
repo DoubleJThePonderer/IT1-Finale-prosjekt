@@ -70,16 +70,16 @@ function animate() {
 
     }
 
-    if (x >= rigtEdge) {
+    if (x == rigtEdge) {
         viewportTransform.x -= 1000
         x += 10
         rigtEdge += 1000
         leftEdge += 1000
     }
 
-    if (x <= leftEdge) {
+    if (x == leftEdge) {
         viewportTransform += 1000
-        x-=10
+        x -= 10
         rigtEdge - 1000
         leftEdge - 1000
     }
