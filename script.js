@@ -10,6 +10,9 @@ x = REZ[0]/2
 y = 100
 radius = 30
 
+rigtEdge = REZ[0]
+leftEdge = 0
+
 var viewportTransform = {
     x: 0,
     y: 0,
@@ -51,7 +54,6 @@ function animate() {
         viewportTransform.y
     )
     player()
-    Number(viewportTransform.x -= xspe)
     x += xspe
     // platx += platxsp
     // dette skaper tyngdekraft
@@ -68,6 +70,19 @@ function animate() {
 
     }
 
+    if (x >= rigtEdge) {
+        viewportTransform.x -= 1000
+        x += 10
+        rigtEdge += 1000
+        leftEdge += 1000
+    }
+
+    if (x <= leftEdge) {
+        viewportTransform += 1000
+        x-=10
+        rigtEdge - 1000
+        leftEdge - 1000
+    }
     platforms()
     // denne lager neste frame
     requestAnimationFrame(animate);
