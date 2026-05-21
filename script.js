@@ -70,18 +70,17 @@ function animate() {
 
     }
 
-    if (x == rigtEdge) {
-        viewportTransform.x -= 1000
+    if (x >= rigtEdge) {
+        Number(viewportTransform.x -= 1000)
         x += 10
         rigtEdge += 1000
         leftEdge += 1000
     }
-
     if (x == leftEdge) {
-        viewportTransform += 1000
+        Number(viewportTransform.x += 1000)
         x -= 10
-        rigtEdge - 1000
-        leftEdge - 1000
+        rigtEdge -= 1000
+        leftEdge -= 1000
     }
     platforms()
     // denne lager neste frame
