@@ -54,10 +54,14 @@ const char = new player({
     color: "red"
 })
 
-function platforms() {
-    ctx.fillStyle = "blue"
-    ctx.fillRect(50, 200, 100, 10)
-    ctx.fillRect(900,200, 200, 20)
+// function platforms() {
+//     ctx.fillStyle = "blue"
+//     ctx.fillRect(50, 200, 100, 10)
+//     ctx.fillRect(900,200, 200, 20)
+// }
+
+class platform{
+    
 }
 
 function animate() {
@@ -76,18 +80,16 @@ function animate() {
     char.draw()
     char.position.x += xspe
 
-    // dette skaper tyngdekraft
-    if (char.position.y <= REZ[1] - radius + 1 ) {
-        char.position.y += yvel
-        yvel += G
-        
-    }
-    // dette er kolisjon
-    else {
+    // dette skaper kolosjon
+    if (char.position.y >= REZ[1] - radius + 1 ) {
         canJump = true
         yvel = 0
         char.position.y = REZ[1] - radius + 1
-
+    }
+    // dette er tyngdekraft
+    else {
+        char.position.y += yvel
+        yvel += G
     }
 
     if (char.position.x >= rigtEdge) {
@@ -102,7 +104,7 @@ function animate() {
         rigtEdge -= REZ[0]
         leftEdge -= REZ[0]
     }
-    platforms()
+    // platforms()
     // denne lager neste frame
     requestAnimationFrame(animate);
 }
