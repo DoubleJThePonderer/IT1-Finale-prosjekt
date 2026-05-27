@@ -6,8 +6,6 @@ cv.height = REZ[1];
 const ctx = cv.getContext("2d");
 
 //posisjon
-x = REZ[0]/2
-y = 100
 radius = 30
 
 rigtEdge = REZ[0]
@@ -27,12 +25,34 @@ jump = -10
 G = 0.4
 xspe = 0
 
-function player() {
-    ctx.beginPath();
-    ctx.arc(x, y, radius, Math.PI * 2, false)
-    ctx.fillStyle = "red"
-    ctx.fill();
+class player{
+    constructor({
+    position = { x: 200, y: 200 },
+    color = 'red',
+    charradius = radius,
+    height = 100,
+  }){
+    this.position = position
+    this.radius = charradius
+    this.height = height
+    this.color = color
+  }
+draw() {
+        ctx.beginPath();
+        ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color
+        ctx.fill();
+        
+    }
 }
+
+const char = new player({
+    position: {
+        x: 100,
+        y: 100
+    },
+    color: "red"
+})
 
 function platforms() {
     ctx.fillStyle = "blue"
@@ -53,12 +73,12 @@ function animate() {
         viewportTransform.x,
         viewportTransform.y
     )
-    player()
-    x += xspe
-    // platx += platxsp
+    char.draw()
+    char.position.x += xspe
+
     // dette skaper tyngdekraft
-    if (y <= REZ[1] - radius + 1 ) {
-        y += yvel
+    if (char.position.y <= REZ[1] - radius + 1 ) {
+        char.position.y += yvel
         yvel += G
         
     }
@@ -66,19 +86,19 @@ function animate() {
     else {
         canJump = true
         yvel = 0
-        y = REZ[1] - radius + 1
+        char.position.y = REZ[1] - radius + 1
 
     }
 
-    if (x >= rigtEdge) {
+    if (char.position.x >= rigtEdge) {
         Number(viewportTransform.x -= REZ[0])
-        x += 10
+        char.position.x += 10
         rigtEdge += REZ[0]
         leftEdge += REZ[0]
     }
-    if (x == leftEdge) {
+    if (char.position.x == leftEdge) {
         Number(viewportTransform.x += REZ[0])
-        x -= 10
+        char.position.x -= 10
         rigtEdge -= REZ[0]
         leftEdge -= REZ[0]
     }
@@ -92,9 +112,9 @@ document.addEventListener("keydown", (event) => {
 
     switch (event.key) {
         case ' ':
-            if (y >= 0 + radius && canJump) {
+            if (char.position.y >= 0 + radius && canJump) {
                 yvel += jump
-                y += yvel
+                char.position.y += yvel
                 canJump= false
 
             }
