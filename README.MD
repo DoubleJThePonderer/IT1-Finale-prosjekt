@@ -12,4 +12,8 @@ det jeg skal er å utvide et eksisterene prosjekt som jeg kom delvis langt på.
 
 ## 13.05.2026
 - adda viewport (må forbedres men funker intill videre)
+
+## 27.05.2026
+- beggynte å gjøre ting til class
+- oversatte ting til å skulle fungere bedre i framtida
 -

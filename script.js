@@ -68,7 +68,7 @@ function animate() {
     ctx.setTransform(1, 0, 0, 1, 0, 0)
     ctx.clearRect(0, 0, REZ[0], REZ[1])
 
-
+    // view point
     ctx.setTransform(
         viewportTransform.scale,
         0,
@@ -77,6 +77,7 @@ function animate() {
         viewportTransform.x,
         viewportTransform.y
     )
+
     char.draw()
     char.position.x += xspe
 
